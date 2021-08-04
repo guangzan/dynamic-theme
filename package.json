@@ -1,0 +1,101 @@
+{
+  "name": "dynamic-theme",
+  "displayName": "Dynamic Theme",
+  "description": "Experience Dynamic Theme on VS Code.",
+  "version": "0.0.1",
+  "author": {
+    "name": "guangzan",
+    "url": "https://github.com/guangzan"
+  },
+  "publisher": "guangzan",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/guangzan/dynamic-theme"
+  },
+  "engines": {
+    "vscode": "^1.58.0"
+  },
+  "categories": [
+    "Themes",
+    "Other"
+  ],
+  "activationEvents": [
+    "*",
+    "onCommand:dynamic-theme.helloWorld"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "configuration": [
+      {
+        "type": "object",
+        "title": "Dynamic Theme configuration",
+        "properties": {
+          "dynamic-theme.dark": {
+            "type": "string",
+            "default": "Default Dark+",
+            "description": "Dark Theme"
+          },
+          "dynamic-theme.light": {
+            "type": "string",
+            "default": "Default Light+",
+            "description": "Light theme"
+          },
+          "dynamic-theme.darkTime": {
+            "type": "string",
+            "default": "20:00",
+            "description": "Hour(24h) of the start of the dark theme. Format HH:MM"
+          },
+          "dynamic-theme.lightTime": {
+            "type": "string",
+            "default": "7:00",
+            "description": "Hour(24h) of the start of the light theme. Format HH:MM"
+          }
+        }
+      }
+    ],
+    "commands": [
+      {
+        "command": "dynamic-theme.helloWorld",
+        "title": "Hello World"
+      },
+      {
+        "command": "dynamic-theme.dark",
+        "title": "Dynamic Theme: Set dark theme"
+      },
+      {
+        "command": "dynamic-theme.light",
+        "title": "Dynamic Theme: Set light theme"
+      },
+      {
+        "command": "dynamic-theme.darkTime",
+        "title": "Dynamic Theme: Set dark theme time. Format HH:MM"
+      },
+      {
+        "command": "dynamic-theme.lightTime",
+        "title": "Dynamic Theme: Set light theme time. Format HH:MM"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "yarn run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "yarn run compile && yarn run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js",
+    "build": "vsce package"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.58.0",
+    "@types/glob": "^7.1.3",
+    "@types/mocha": "^8.2.2",
+    "@types/node": "14.x",
+    "eslint": "^7.27.0",
+    "@typescript-eslint/eslint-plugin": "^4.26.0",
+    "@typescript-eslint/parser": "^4.26.0",
+    "glob": "^7.1.7",
+    "mocha": "^8.4.0",
+    "typescript": "^4.3.2",
+    "vscode-test": "^1.5.2"
+  }
+}
